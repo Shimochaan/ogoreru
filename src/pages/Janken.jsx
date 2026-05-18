@@ -31,7 +31,7 @@ function getWinningHand(activePlayers, hands) {
 }
 
 function Janken() {
-  const { players, cart } = useContext(AppContext)
+  const { players, cart, setLoser, history, setHistory, setCart } = useContext(AppContext)
   const navigate = useNavigate()
 
   // ============================================
@@ -102,11 +102,23 @@ function Janken() {
   }
 
   // 結果画面（仮）へ
-  const goToResult = () => {
-    // 奢り役は losers の最後の1人（最終敗者）
-    // ここは将来、Context に保存して Result.jsx で使う想定
-    navigate('/cart')  // 一旦カゴ画面に戻す（後で結果画面に変える）
+ const goToResult = () => {
+  // 奢り役を Context に保存
+  setLoser(losers[0])
+
+  // 履歴に追加
+  const newSession = {
+    date: new Date().toISOString(),
+    players: players,
+    cart: cart,
+    loser: losers[0],
+    totalPrice: cart.reduce((sum, item) => sum + item.price * item.qty, 0),
   }
+  setHistory([newSession, ...history])
+
+  // 結果画面へ遷移
+  navigate('/result')
+}
 
   // ============================================
   // カウントダウンの自動進行

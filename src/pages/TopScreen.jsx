@@ -26,7 +26,7 @@ useEffect(()=>{
 </h1>
 
 <AnimatedButton isVisible={areButtonVisible} variant="primary" onClick={()=>navigate("/setup")} >スタート</AnimatedButton>
-<AnimatedButton isVisible={areButtonVisible} variant="secondary">履歴</AnimatedButton>
+<AnimatedButton onClick={()=>navigate("/history")} isVisible={areButtonVisible} variant="secondary">履歴</AnimatedButton>
 
 
 

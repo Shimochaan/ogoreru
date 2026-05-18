@@ -13,6 +13,9 @@ export function AppProvider({ children }) {
   ])
 
   const [cart, setCart] = useState([])
+   const [loser, setLoser] = useState(null)
+
+   const [history, setHistory] = useState([])
 
   // Provider で配信する値（state と setter のセット）
   const value = {
@@ -20,6 +23,8 @@ export function AppProvider({ children }) {
     setPlayers,
     cart,
     setCart,
+    loser,setLoser,
+    history,setHistory,
   }
 
   return (
