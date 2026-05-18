@@ -1,6 +1,7 @@
 
-import { useState } from "react"
+import { useContext } from "react"
 import { useNavigate } from "react-router-dom"
+import { AppContext } from "../context/AppContext"
 
 
 // 商品データ（ファイル先頭、function の外に書く）
@@ -30,7 +31,7 @@ const PRODUCTS = [
 
 function Shop() {
 
-const [cart,setCart] = useState([])
+const {cart,setCart} = useContext(AppContext)
 const navigate = useNavigate()
 
 const addToCart = (product) => {

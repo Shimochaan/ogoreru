@@ -1,5 +1,6 @@
-import { useState } from "react"
+import { useState,useContext} from "react"
 import { useNavigate } from "react-router-dom"
+import { AppContext } from "../context/AppContext"
 
 // 動物絵文字のリスト
 const ANIMAL_ICONS = ['🐱','🐶','🐼','🦁','🐯','🐰','🦊','🐻','🐨','🐮','🐷','🐸','🐵','🐔','🐧','🦉','🐺','🦄','🐴','🦝','🐹','🐭']
@@ -9,11 +10,7 @@ function PlayerSetup() {
 const navigate = useNavigate()
 
 
-  const [players, setPlayers] = useState([
-    { name: '', icon: '🐱' },
-    { name: '', icon: '🐶' },
-    { name: '', icon: '🐼' },
-  ])
+  const {players, setPlayers} = useContext(AppContext)
 
   // 「今どのプレイヤーのアイコンを編集中か」を表すstate
   // null = モーダル非表示、数値 = そのindexのプレイヤーを編集中
